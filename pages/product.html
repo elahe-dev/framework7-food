@@ -1,0 +1,57 @@
+﻿<template>
+    <div class="page" data-name="catalog">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left" style="background-color:#c32d3b;width:50px">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <!--<span class="ios-only">Back</span>-->
+                    </a>
+                </div>
+                <div class="title">{{product.title}}</div>
+                <div class="right">
+                    <a href="#" class="link icon-only panel-open" data-panel="right">
+                        <i class="icon f7-icons ios-only">card_travel<span class="badge color-red bsk">0</span></i>
+                        <i class="icon material-icons md-only">card_travel<span class="badge color-red">0</span></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="block-title"></div>
+            <div class="block block-strong">
+                {{product.img}}
+                <br />
+                Name: {{product.title}}
+                <br />
+                Type: {{product.description}}
+                <br />
+
+               Weight: {{product.weight}}
+                <br />
+                Price: {{product.price}}
+                <a href="#" class="col button button-small button-fill"  
+                   style="background-color:#c32d3b;" 
+                   onclick='add2bsk("{{product.title}}","{{product.description}}","{{product.weight}}","{{product.price}}")'>Add To Basket</a>
+            </div>
+            
+        </div>
+    </div>
+</template>
+<script>
+  return {
+    data: function () {
+      var productId = this.$route.params.id;
+      var currentProduct;
+      this.$root.products.forEach(function (product) {
+        if (product.id === productId) {
+          currentProduct = product;
+        }
+      });
+      return {
+        product: currentProduct,
+      };
+    }
+  };
+</script>
